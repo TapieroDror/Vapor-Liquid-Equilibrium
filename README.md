@@ -1,6 +1,6 @@
 # Vapor-Liquid-Equilibrium
 This repository contains algorithms for determining the vapor-liquid equilibrium of fluid mixtures.  
-<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>  
+<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>  
 <><><><><><><><><><>Do not Copy - All Rights Reserved to Tapiero Dror ©<><><><><><><><><><>.  
 <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>  
 If you encounter an issue with the code, please contact admiraltap@gmail.com with a request to Tapiro Dror.  
