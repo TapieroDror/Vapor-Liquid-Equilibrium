@@ -1,6 +1,10 @@
-% Liquid and Vapor Mole Fraction calculator using Peng-Robindon Equation of
-% State and Van der Waals Mixing Rules
-% Do not Copy - All Rights Reserved to Tapiero Dror
+% Liquid and Vapor Binary Diagram for Constant Pressure Calculator Using
+% Peng-Robinson Equation of State and van der Waals Mixing Rules
+%<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+%<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% <><><><><><>Do not Copy - All Rights Reserved to Tapiero Dror<><><><><><>
+%<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+%<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 %--------------------------------------------------------------------------
 %critical constants and acentric factor
 %Mw - molar mass [kg/kmol]
@@ -84,7 +88,7 @@ P=2.5; %[MPa]
 Pbar=P*10; %[bar]
 propertie1=21; %number from table (propertie 1)
 propertie2=14; %number from table (propertie 2)
-index=3;
+index=4;
 %--------------------------------------------------------------------------
 % flash calculation using fsolve and a zeroorder collocation method
 global z % Define global variable.
@@ -170,9 +174,9 @@ end
 axis tight
 prop1=PropertieNames(propertie1);
 prop2=PropertieNames(propertie2);
-xlabel([prop1+' vapor or liquid mole fraction'])
+xlabel(prop1+' vapor or liquid mole fraction')
 ylabel('temperature in K')
 Pbar=int2str(Pbar);
-title(["isobaric VLE diagram for "+prop1+"/"+prop2+" mixture at "+Pbar+" bar"])
+title("isobaric VLE diagram for "+prop1+"/"+prop2+" mixture at "+Pbar+" bar")
 grid on
 shg

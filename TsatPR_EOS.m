@@ -1,4 +1,4 @@
-function T_sat = TsatPR_EOS(prop_num,P)
+function T_sat = TsatPR_EOS(propNum,P,index)
 % Parameters: T,P,Tc,Pc,w
 % T: Temperature [K]                                          
 % P: Pressure [Pa]                                             
@@ -7,7 +7,7 @@ function T_sat = TsatPR_EOS(prop_num,P)
 % w: accentic factor
 R = 8.3144621; % gas constant J/(mol K)
 
-prop=criticalProperties(prop_num);
+prop=criticalProperties(propNum);
 Tc=prop(3); 
 Pc=prop(4)*10^6;
 w=prop(6);
@@ -16,12 +16,9 @@ T=Tc*0.0001;
 % Reduced variables
 Tr = T/Tc ;
 
-% Parameters of the EOS for a pure component
-f = 0.37464 + 1.54226*w - 0.26992*w^2;% simplification term
-
 % w is the acentric factor
-alfa = (1 + f*(1 - sqrt(Tr)))^2;
-a = 0.45724*(R*Tc)^2/Pc*alfa;% attraction parameter
+alpha=alphaFunctions(index,w,Tr,propNum);
+a = 0.45724*(R*Tc)^2/Pc*alpha;% attraction parameter
 b = 0.0778*R*Tc/Pc;% repulsion parameter
 A = a*P/(R*T)^2;
 B = b*P/(R*T);
@@ -32,8 +29,8 @@ ZR = [];
 while (isreal(Z(1))==0||isreal(Z(2))==0||isreal(Z(3))==0)
     T=T+0.001;
     Tr = T/Tc ;
-    alfa = (1 + f*(1 - sqrt(Tr)))^2;
-    a = 0.45724*(R*Tc)^2/Pc*alfa;
+    alpha=alphaFunctions(index,w,Tr,propNum);
+    a = 0.45724*(R*Tc)^2/Pc*alpha;
     b = 0.0778*R*Tc/Pc;
     A = a*P/(R*T)^2;
     B = b*P/(R*T);
@@ -60,8 +57,8 @@ while abs((fhi1-fhi2))>0.0001
         T=T+0.001;
     end
     Tr = T/Tc ;
-    alfa = (1 + f*(1 - sqrt(Tr)))^2;
-    a = 0.45724*(R*Tc)^2/Pc*alfa;
+    alpha=alphaFunctions(index,w,Tr,propNum);
+    a = 0.45724*(R*Tc)^2/Pc*alpha;
     b = 0.0778*R*Tc/Pc;
     A = a*P/(R*T)^2;
     B = b*P/(R*T);
